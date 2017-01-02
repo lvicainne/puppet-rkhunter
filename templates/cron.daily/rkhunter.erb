@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# THIS FILE IS MANAGED BY PUPPET
+# <%= file %>
+
+LOGFILE=<%= @logfile %>
+RKHUNTER=<%= scope.lookupvar('rkhunter::params::rkhunter_bin')  %>
+
+# Source system configuration parameters.
+if [ -e <%= @sysconfigfile %> ] ; then
+  . <%= @sysconfigfile %>
+else
+  REPORT_EMAIL=<%= @mail_on_warning %>
+fi
+
+test -x $RKHUNTER || echo "RKHUNTER is not executable" | /usr/sbin/sendmail $REPORT_EMAIL
+
+if [ -z "$NICE" ]; then
+    NICE=0
+fi
+
+case "$CRON_DAILY_RUN" in
+     [YyTt]*)
+        OUTFILE=`mktemp` || exit 1
+        <%= scope.lookupvar('rkhunter::params::nice_bin')  %> -n $NICE $RKHUNTER --cronjob --report-warnings-only --appendlog > $OUTFILE
+        if [ -s "$OUTFILE" -a -n "$REPORT_EMAIL" ]; then
+          (
+            echo "Subject: [rkhunter] $(hostname -f) - Daily report"
+            echo "To: $REPORT_EMAIL"
+            echo ""
+            cat $OUTFILE
+          ) | /usr/sbin/sendmail $REPORT_EMAIL
+        fi
+        /bin/rm -f $OUTFILE
+        ;;
+      *)
+       exit 0
+       ;;
+esac
+

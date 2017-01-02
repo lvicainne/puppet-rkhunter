@@ -5,9 +5,9 @@
     "license": "Apache-2.0",
     "summary": "Manage an rkHunter configuration",
     "description": "Manage rkHunter installation and configuration with Puppet. Inherits from mmz-srf",
-    "source": "https://github.com/lvicainne/lvicainne-rkhunter",
+    "source": "https://github.com/lvicainne/puppet-rkhunter",
     "project_page": "https://forge.puppetlabs.com/lvicainne/rkhunter",
-    "issues_url": "https://github.com/lvicainne/lvicainne-rkhunter/issues",
+    "issues_url": "https://github.com/lvicainne/puppet-rkhunter/issues",
     "tags": ["security", "rootkit"],
     "operatingsystem_support": [
         {

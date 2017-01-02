@@ -18,7 +18,8 @@
 ## Description
 
 This module is a fork from [mmz-srf](https://github.com/mmz-srf/puppet-rkhunter)
-Because I remanage the organisation of the manifests, I decided to rebuiold a new repository.
+
+Because I remanage the organization of the manifests, I decided to rebuild a new repository.
 
 This module works under RedHat, CentOS 6+.
 
@@ -134,3 +135,15 @@ NOTE: there may be more. I do not update this list every time. Have a look into 
   shared_lib_whitelist
 ```
 
+
+## Limitations
+
+This module has only been tested on my Debian and Centos servers. I can not guarantee for any other Operating System
+
+## Development
+
+I chose to open mu own Dovecot Module ; but you are free to contribute on it, etc.
+
+## Release Notes/Contributors/Etc. 
+
+It is a fork from [mmz-srf](https://github.com/mmz-srf/puppet-rkhunter)

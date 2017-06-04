@@ -81,10 +81,10 @@ class rkhunter  (
   validate_absolute_path($sysconfigfile)
   validate_string($package_name)
 
-  anchor { 'rkhunter::begin': } ->
-  class{'rkhunter::install': } ->
-  class{'rkhunter::config': } ->
-  class{'rkhunter::service': } ->
-  anchor { 'rkhunter::end': }
+  anchor { 'rkhunter::begin': }
+  -> class{'rkhunter::install': }
+  -> class{'rkhunter::config': }
+  -> class{'rkhunter::service': }
+  -> anchor { 'rkhunter::end': }
 
 }

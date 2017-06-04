@@ -273,5 +273,4 @@ class rkhunter::params {
   }
 
   $rkhunter_bin = '/usr/bin/rkhunter'
-  
 }
